@@ -1,0 +1,15 @@
+flask==1.1.2
+cryptography==3.4.6
+flask-htpasswd==0.4.0
+Keras==2.3.1
+matplotlib==3.3.3
+numpy==1.19.4
+opencv-contrib-python==4.5.3.56
+Pillow==7.0.0
+scikit-image==0.16.2
+scipy==1.5.4
+requests==2.22.0
+h5py==2.10.0
+albumentations @ git+https://github.com/albu/albumentations@97acaa447e9a8d81223e0b8591493b4ed691f9f6
+segmentation-models==1.0.1
+pydicom==2.2.1

@@ -1,0 +1,1 @@
+in mac, just workon TMUH_api virtual env don't need to use Docker
