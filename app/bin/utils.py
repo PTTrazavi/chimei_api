@@ -2,7 +2,7 @@ import pydicom
 import cv2
 import numpy as np
 import scipy as sp
-import os
+import os, shutil
 import ffmpeg
 from PIL import Image
 from skimage import io
@@ -46,7 +46,8 @@ def convert_frames_to_video(pathIn, static_dir, folder_name, fps=25):
         size = (width,height)
         #inserting the frames into an image array
         frame_array.append(img)
-
+    if os.path.exists(os.path.join(static_dir, folder_name)):
+        shutil.rmtree(os.path.join(static_dir, folder_name))
     if not os.path.exists(os.path.join(static_dir, folder_name)):
         os.mkdir(os.path.join(static_dir, folder_name))
 
