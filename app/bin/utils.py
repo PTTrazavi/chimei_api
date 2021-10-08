@@ -3,6 +3,7 @@ import cv2
 import numpy as np
 import scipy as sp
 import os
+import ffmpeg
 from PIL import Image
 from skimage import io
 import random as rng
@@ -49,13 +50,21 @@ def convert_frames_to_video(pathIn, static_dir, folder_name, fps=25):
     if not os.path.exists(os.path.join(static_dir, folder_name)):
         os.mkdir(os.path.join(static_dir, folder_name))
 
-    out = cv2.VideoWriter(os.path.join(static_dir, folder_name, "dicom.mp4"),
-                            cv2.VideoWriter_fourcc(*'DIVX'), fps, size) # MP42 DIVX
+    out = cv2.VideoWriter(os.path.join(static_dir, folder_name, "dicom_temp.mp4"),
+                            cv2.VideoWriter_fourcc(*'mp4v'), fps, size) # MP42 DIVX mp4v
 
     for i in range(len(frame_array)):
         # writing to a image array
         out.write(frame_array[i])
     out.release()
+    # convert to h264 codec
+    process = (
+    ffmpeg
+    .input(os.path.join(static_dir, folder_name, "dicom_temp.mp4"))
+    .output(os.path.join(static_dir, folder_name, "dicom.mp4"),vcodec='libx264')
+    .run_async(pipe_stdout=True, pipe_stderr=True)
+    )
+    out, err = process.communicate()
 
 
 # save the mask image function
