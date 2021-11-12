@@ -13,3 +13,4 @@ h5py==2.10.0
 albumentations @ git+https://github.com/albu/albumentations@97acaa447e9a8d81223e0b8591493b4ed691f9f6
 segmentation-models==1.0.1
 pydicom==2.2.1
+ffmpeg-python ==0.2.0
