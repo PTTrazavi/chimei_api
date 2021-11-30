@@ -23,6 +23,15 @@ model_class_path = os.path.join(folder_path, "model", "custom_4_classes_58_0.87.
 testdata_root = os.path.join(media_dir, "dicom_source")
 savedata_root = os.path.join(media_dir, "dicom_result")
 
+if not os.path.exists(static_dir):
+    os.mkdir(static_dir)
+if not os.path.exists(media_dir):
+    os.mkdir(media_dir)
+if not os.path.exists(testdata_root):
+    os.mkdir(testdata_root)
+if not os.path.exists(savedata_root):
+    os.mkdir(savedata_root)
+
 app = Flask(__name__, template_folder=template_dir, static_url_path='/static', static_folder=static_dir)
 
 @app.route('/chimei_api', methods=['POST'])

@@ -25,4 +25,5 @@ RUN apt-get update
 RUN apt-get install ffmpeg libsm6 libxext6  -y
 RUN mkdir /workspace/chimei
 WORKDIR /workspace/chimei
-ENTRYPOINT bash
+# ENTRYPOINT bash
+CMD ["python", "/workspace/chimei/bin/run.py"]

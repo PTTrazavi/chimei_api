@@ -13,5 +13,16 @@ docker exec -it [container ID] bash
 ```bash
 python3 bin/run.py
 ```
+4. if you want to execute flask when container is run, edit Dockerfile to:  
+```bash
+# ENTRYPOINT bash
+CMD ["python", "/workspace/chimei/bin/run.py"]
+```
+if you want to execute flask by entering the container, edit Dockerfile to:  
+```bash
+ENTRYPOINT bash
+# CMD ["python", "/workspace/chimei/bin/run.py"]
+```
+
 ## the API will work on this URL
 https://api.openaifab.com:15002/chimei_api  
